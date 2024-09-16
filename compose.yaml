@@ -8,4 +8,4 @@ services:
     env_file:
       - .env
     volumes:
-      - .:/contrans2024
+      - ./:/contrans2024
