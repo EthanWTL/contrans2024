@@ -30,3 +30,16 @@ class contrans:
         useragent = self.get_useragent()
         headers = {'User-Agent': useragent, 'From': email}
         return headers
+    
+    def get_bioguideIDs(self):
+          params={'api_key':self.congresskey}
+          headers = self.make_header()
+          root = 'https://api.congress.gov/v3'
+          endpoint = '/member'
+          r = requests.get(root+endpoint, params=params, headers=headers)
+          bio_df = pd.json_normalize(r.json(), record_path =['members'])
+          bio_df[['name','state','district','bioguideId']]
+                
+          return bio_df
+
+          
