@@ -6,7 +6,7 @@ from dash import html
 from dash.dependencies import Input, Output
 from contrans import contrans
 import os
-#import plotly.
+import plotly.figure_factory as ff
 ct = contrans()
 server, engine = ct.connect_to_postgres(ct.POSTGRES_PASSWORD, host='postgres')
 
