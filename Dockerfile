@@ -1,19 +1,19 @@
 # syntax=docker/dockerfile:1
 
-# Use python bookworm as the base image
+# Use an official Python image as a base
 FROM python:3.12.5-bookworm
 
-# Set the working directory to /app
+# Set the working directory to /contrans2024
 WORKDIR /contrans2024
 
-# Copy the requirements.txt file into the container
+# Copy the requirements file into the working directory
 COPY requirements.txt requirements.txt
 
-# Install Python 3.12.5
-RUN pip install --upgrade pip && pip3 install -r requirements.txt
+# Install the dependencies using pip
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# Expose the port for Jupyter Lab
-EXPOSE 8888
+# Expose the port for the dashboard
+EXPOSE 8050
 
-# Run Jupyter Lab when the container starts
-CMD ["jupyter", "lab", "--allow-root", "--ip=0.0.0.0", "--port=8888"]
+# Run the dashboard when the container launches
+CMD ["python", "app.py"]
